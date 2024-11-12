@@ -1,7 +1,1 @@
-let x
-let y
-
-x = 1 
-y = "2"
-
-alert(x + y)
+aletrt("Hello To My WebSite!")
