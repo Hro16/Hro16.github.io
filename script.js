@@ -1,1 +1,0 @@
-alert("WellCome Gerezman.com!");
