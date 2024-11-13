@@ -1,1 +1,1 @@
-aletrt("Hello To My WebSite!")
+alert("WellCome Gerezman.com!")
