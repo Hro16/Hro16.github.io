@@ -3,42 +3,136 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="style.css">
-	<title>Sevakavan.am</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="javascript" href="script.js">
+	<title>HTML</title>
 </head>
 <body>
-	<div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <form class="form">
-    <label for="search">
-        <input class="input" type="text" required="" placeholder="Search" id="search">
-        <div class="fancy-bg"></div>
-        <div class="search">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
-                <g>
-                    <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-                </g>
-            </svg>
-        </div>
-        <button class="close-btn" type="reset">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg>
-        </button>
-    </label>
-</form>
-</div>
-<div class="namediv">
-  <h1 class="h1">SEVAKAVAN.AM</h1>
-</div>
-
+	<ul class="quiz">
+    <li>
+        <h4>Ape vapshe du lav txa es??</h4>
+        <ul class="choices">
+            <li>
+                <label
+                    ><input type="radio" name="question0" value="A" /><span
+                        >HA</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question0" value="B" /><span
+                        >Che</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question0" value="C" /><span
+                        >Esim?</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question0" value="D" /><span
+                        >Shrjapatics harcra</span
+                    ></label
+                >
+            </li>
+        </ul>
+    </li>
+    <li>
+        <h4>Asenq patin gndaka nkarac asum a tshi...inch pti anes??</h4>
+        <ul class="choices">
+            <li>
+                <label
+                    ><input type="radio" name="question1" value="A" /><span
+                        >ktshem</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question1" value="B" /><span
+                        >chem tshi</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question1" value="C" /><span
+                        >kasem pas tu tshem</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question1" value="D" /><span
+                        >kkodrvem</span
+                    ></label
+                >
+            </li>
+        </ul>
+    </li>
+    <li>
+        <h4>Vapshe qani hat chist ka?</h4>
+        <ul class="choices">
+            <li>
+                <label
+                    ><input type="radio" name="question2" value="A" /><span
+                        >Amen mard mi chisht uni</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question2" value="B" /><span
+                        >kanechno 1</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question2" value="C" /><span
+                        >erevi 2</span
+                    ></label
+                >
+            </li>
+            <li>
+                <label
+                    ><input type="radio" name="question2" value="D" /><span
+                        >pix</span
+                    ></label
+                >
+            </li>
+        </ul>
+    </li>
+</ul>
+<button class="view-results" onclick="returnScore()">Tesnel patasxannery</button>
+<span id="myresults" class="my-results">Chisht patasxanner</span>
 
 </body>
-<script>
-	
-
+<script type="text/javascript">
+	var answers = ["A", "C", "B"],
+    tot = answers.length;
+function getCheckedValue(radioName) {
+    var radios = document.getElementsByName(radioName);
+    for (var y = 0; y < radios.length; y++)
+        if (radios[y].checked) return radios[y].value;
+}
+function getScore() {
+    var score = 0;
+    for (var i = 0; i < tot; i++)
+        if (getCheckedValue("question" + i) === answers[i]) score += 1;
+    return score;
+}
+function returnScore() {
+    document.getElementById("myresults").innerHTML =
+        "Chisht patasxan " + getScore() + "/" + tot;
+    if (getScore() > 2) {
+        console.log("Bravo");
+    }
+}
 </script>
 </html>
