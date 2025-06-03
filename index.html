@@ -3,98 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ծալվող ծրար</title>
+  <title>Ծրար Բացող</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
+      background-color: #fce4ec;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
       font-family: sans-serif;
-    }
-
-    .envelope-wrapper {
-      perspective: 1000px;
     }
 
     .envelope {
       position: relative;
-      width: 300px;
-      height: 200px;
-      background: #cfd8dc;
-      border: 2px solid #607d8b;
-      border-radius: 8px;
+      width: 90vw;
+      max-width: 320px;
+      aspect-ratio: 3 / 2;
+      background: pink;
+      border: 2px solid #d81b60;
+      border-radius: 10px;
       overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transition: all 0.5s ease;
     }
 
     .flap {
       position: absolute;
       top: 0;
+      width: 100%;
+      height: 50%;
+      background: #f06292;
+      transform-origin: top;
+      transition: transform 0.5s ease;
+    }
+
+    .message {
+      position: absolute;
+      top: 100%;
       left: 0;
       width: 100%;
-      height: 100px;
-      background: #90a4ae;
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
-      transform-origin: top;
-      transform: rotateX(0deg);
-      transition: transform 0.8s ease;
-      z-index: 2;
-    }
-
-    .letter {
-      position: absolute;
-      top: 120px;
-      left: 10%;
-      width: 80%;
-      height: 140px;
+      height: 100%;
       background: white;
-      border: 1px solid #ccc;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      color: #d81b60;
       text-align: center;
-      font-size: 18px;
-      padding-top: 40px;
+      padding-top: 25%;
+      font-size: 5vw;
       box-sizing: border-box;
-      transition: top 0.8s ease 0.3s;
-      z-index: 1;
+      transition: top 0.5s ease;
     }
 
-    .envelope.open .flap {
-      transform: rotateX(-120deg);
+    .open .flap {
+      transform: rotateX(180deg);
     }
 
-    .envelope.open .letter {
-      top: -30px;
+    .open .message {
+      top: 0;
     }
 
     button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background: #455a64;
-      color: white;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 16px;
       border: none;
+      background: #d81b60;
+      color: white;
       border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 4vw;
+      transition: background 0.3s;
     }
 
     button:hover {
-      background: #263238;
+      background: #ad1457;
     }
   </style>
 </head>
 <body>
 
-  <div class="envelope-wrapper">
-    <div class="envelope" id="envelope">
-      <div class="flap"></div>
-      <div class="letter">Ծնունդդ շնորհավոր, Ապե՛ր 🎉</div>
-    </div>
-    <div style="text-align: center;">
-      <button onclick="openEnvelope()">Բացել</button>
-    </div>
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="message">Դու անհավանական ես 💌</div>
+    <button onclick="openEnvelope()">Բացել</button>
   </div>
 
   <script>
