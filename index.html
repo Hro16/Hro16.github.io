@@ -3,82 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ծրար Բացող</title>
+  <title>Ծրար ➜ Նամակ</title>
   <style>
     body {
-      background-color: #1a1a1a; /* մուգ մոխրագույն */
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #eceff1;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      font-family: sans-serif;
     }
 
     .envelope {
-      position: relative;
-      width: 90vw;
-      max-width: 320px;
-      aspect-ratio: 3 / 2;
-      background: #2e2e2e; /* մոխրագույն ծրարի մարմին */
-      border: 2px solid #555; /* մուգ մոխրագույն եզրագիծ */
+      width: 300px;
+      height: 200px;
+      background: #cfd8dc;
+      border: 2px solid red;
       border-radius: 10px;
+      position: relative;
       overflow: hidden;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
-      transition: all 0.5s ease;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
 
-    .flap {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      height: 50%;
-      background: #3f3f3f; /* ավելի բաց մոխրագույն փական */
-      transform-origin: top;
-      transition: transform 0.5s ease;
-    }
-
-    .message {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #e0e0e0; /* բաց մոխրագույն թուղթ */
-      color: #111; /* գրության գույն */
-      text-align: center;
-      padding-top: 25%;
-      font-size: 4vw;
-      box-sizing: border-box;
-      transition: top 0.5s ease;
-    }
-
-    .open .flap {
-      transform: rotateX(180deg);
-    }
-
-    .open .message {
-      top: 0;
-    }
 
     button {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 8px 16px;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #455a64;
+      color: white;
       border: none;
-      background: #444; /* մուգ մոխրագույն կոճակ */
-      color: #eee;
       border-radius: 20px;
       cursor: pointer;
-      font-weight: bold;
-      font-size: 4vw;
-      transition: background 0.3s;
+      font-size: 16px;
     }
 
     button:hover {
-      background: #666; /* ավելի բաց մոխրագույն՝ հովերի համար */
+      background: #263238;
+    }
+
+    /* Full page letter */
+    .letter-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      color: #212121;
+      padding: 40px;
+      box-sizing: border-box;
+      display: none;
+      overflow-y: auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .letter-page.show {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 12px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -86,13 +91,78 @@
 
   <div class="envelope" id="envelope">
     <div class="flap"></div>
-    <div class="message">Ապերս ծնունդդ շնորհավոր քեզ ցանկանում եմ ամենալավն ու բարին միշտ հասնես բարձունքների ու միշտ ժպտաս:🎂</div>
-    <button onclick="openEnvelope()">Բացել</button>
+    <p>📩 Նամակ կա քեզ համար</p>
+    <button onclick="openLetter()">Բացել</button>
+  </div>
+
+  <div class="letter-page" id="letterPage">
+    <button class="close-btn" onclick="closeLetter()">Փակել</button>
+    <h2>Ծնունդդ Շնորհավոր, Ապե՛ր 🎉</h2>
+    <p>
+Սիրելի խոսքերը և նախադասությունները:<br><br>
+Ռաունդ 1 🥊<br><br>
+— Քթոս!: 🙂<br><br>
+— Ի՞նչ:😠<br><br>
+— Գոռց էրա: 😠<br><br>
+🤦‍♂️
+
+Ռաունդ 2 🥊<br><br>
+— Հերիք ուտես հերիք (էլի կերա): 😅<br><br>
+— Վայ, նոր հաց կուտեմ իիի: 🤷‍♀️<br><br>
+
+Ռաունդ 3 🥊<br><br>
+— Քթոս, դու դեբիլ ե՞ս:🙁։<br><br>
+— Դու ես, այ խլընկոտ: 😕😪<br><br>
+
+Ռաունդ 4 🥊<br><br>
+— Ռադ էղար, անասուն: 😡<br><br>
+— Դու ռադ էղար: 🏃‍♀️➡️🫢<br><br>
+
+Ռաունդ 5 🥊<br><br>
+— Թղթերտ ուրանե՞: 📃<br><br>
+— Ի՞նչի: 🤔<br><br>
+— Որ հանձնենք մանկատուն։😏<br><br>
+— 🥺🤷‍♀️🤦‍♀️<br><br>
+
+Ռաունդ 6 🥊<br><br>
+— Վսյո, քթոս, եկ ու քեզ նշանենք։ 👰‍♀️<br><br>
+— Չէ, ես տունդ պիտի մնամ։ 🙄<br><br>
+— Քեզ տունդ պահող էլ չկա։ 🤭<br><br>
+
+Ռաունդ 7 🥊<br><br>
+— Ապեր, ինձ կտա՞ս շաուրմիտ կեսը։ 🥺<br><br>
+— Չէ, ռադ եղի։ 😠<br><br>
+— Լավ, բըգիդ կայնի։ 😝<br><br>
+
+Ռաունդ 8 🥊<br><br>
+— Ապեր,  եսե գուզեմ ես շորից։ 🙏🥺<br><br>
+— Հա ուզե, ուզելնել հո փողով չէ: 😂<br><br>
+— 😢😤<br><br>
+
+Ռաունդ 9 🥊<br><br>
+— Ապեր, ես քեզ շատ եմ սիրում։ ❤️<br><br>
+— Փորիդ ցավը սա։ 🤗<br><br>
+— Ապեր, կինդեռ կառնես?։ 🫶<br><br>
+— Հա։ 💋<br><br>
+— Ե՞րբ։ 🤔<br><br>
+— Իշու զատկին։ 🤣<br><br>
+— Իիի: 😢<br><br>
+
+Եվ վերջի Ռաունդ 10 🥰<br><br>
+Բայց մեկ է, դու իմ ամենալավ ապերն ես: 💋❤🥰<br><br>
+Ես քեզ սիրում եմ:<br><br>
+
+
+    </p>
   </div>
 
   <script>
-    function openEnvelope() {
-      document.getElementById('envelope').classList.add('open');
+    function openLetter() {
+      document.getElementById('letterPage').classList.add('show');
+    }
+
+    function closeLetter() {
+      document.getElementById('letterPage').classList.remove('show');
     }
   </script>
 
