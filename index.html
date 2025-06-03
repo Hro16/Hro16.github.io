@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ծրար Բացող</title>
+  <title>Ծնունդդ շնորհավոր, Ապե՛ր</title>
   <style>
     body {
-      background-color: whitesmoke;
+      background-color: #e0e0e0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -20,22 +20,25 @@
       width: 90vw;
       max-width: 320px;
       aspect-ratio: 3 / 2;
-      background: pink;
-      border: 2px solid #d81b60;
-      border-radius: 10px;
+      background: #b0bec5;
+      border: 2px solid #455a64;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       transition: all 0.5s ease;
     }
 
     .flap {
       position: absolute;
       top: 0;
-      width: 100%;
-      height: 50%;
-      background: #f06292;
-      transform-origin: top;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-bottom: 100px solid #78909c;
       transition: transform 0.5s ease;
+      transform-origin: top center;
     }
 
     .message {
@@ -45,7 +48,7 @@
       width: 100%;
       height: 100%;
       background: white;
-      color: #d81b60;
+      color: #263238;
       text-align: center;
       padding-top: 25%;
       font-size: 5vw;
@@ -68,7 +71,7 @@
       transform: translateX(-50%);
       padding: 8px 16px;
       border: none;
-      background: #d81b60;
+      background: #455a64;
       color: white;
       border-radius: 20px;
       cursor: pointer;
@@ -78,7 +81,7 @@
     }
 
     button:hover {
-      background: #ad1457;
+      background: #263238;
     }
   </style>
 </head>
@@ -86,7 +89,7 @@
 
   <div class="envelope" id="envelope">
     <div class="flap"></div>
-    <div class="message">Ապերս, ծնունդդ շնորհավոր, մաղթում եմ քեզ անսահման ուժ, առողջություն ու սրտի խաղաղություն։ Միշտ բարձունքների հասնես, ես էլ միշտ կողքդ լինեմ ու քեզով հպարտանամ Ամենա լավն ու բարին քեզ, մնա միշտ ուժեղ ու ժպտա: 💌</div>
+    <div class="message">Ծնունդդ շնորհավոր, Ապե՛ր 🎉</div>
     <button onclick="openEnvelope()">Բացել</button>
   </div>
 
