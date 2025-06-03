@@ -3,77 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ծրար & Նամակ</title>
+  <title>Ծալվող ծրար</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
       background: #f5f5f5;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
       font-family: sans-serif;
     }
 
     .envelope-wrapper {
-      position: relative;
-      width: 300px;
-      height: 200px;
       perspective: 1000px;
     }
 
     .envelope {
-      width: 100%;
-      height: 100%;
+      position: relative;
+      width: 300px;
+      height: 200px;
       background: #cfd8dc;
       border: 2px solid #607d8b;
       border-radius: 8px;
       overflow: hidden;
-      position: relative;
     }
 
     .flap {
       position: absolute;
       top: 0;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: 150px solid transparent;
-      border-right: 150px solid transparent;
-      border-bottom: 100px solid #90a4ae;
-      transform-origin: top center;
-      transition: transform 0.7s ease;
-      z-index: 3;
+      width: 100%;
+      height: 100px;
+      background: #90a4ae;
+      clip-path: polygon(0 0, 50% 100%, 100% 0);
+      transform-origin: top;
+      transform: rotateX(0deg);
+      transition: transform 0.8s ease;
+      z-index: 2;
     }
 
     .letter {
       position: absolute;
-      top: 100%;
+      top: 120px;
       left: 10%;
       width: 80%;
-      height: 100%;
+      height: 140px;
       background: white;
       border: 1px solid #ccc;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       text-align: center;
       font-size: 18px;
-      padding-top: 60px;
+      padding-top: 40px;
       box-sizing: border-box;
-      transition: top 0.7s ease 0.2s;
-      z-index: 2;
+      transition: top 0.8s ease 0.3s;
+      z-index: 1;
     }
 
-    .open .flap {
-      transform: rotateX(180deg);
+    .envelope.open .flap {
+      transform: rotateX(-120deg);
     }
 
-    .open .letter {
-      top: 0;
+    .envelope.open .letter {
+      top: -30px;
     }
 
     button {
       margin-top: 20px;
-      padding: 8px 20px;
+      padding: 10px 20px;
       background: #455a64;
       color: white;
       border: none;
@@ -94,7 +92,9 @@
       <div class="flap"></div>
       <div class="letter">Ծնունդդ շնորհավոր, Ապե՛ր 🎉</div>
     </div>
-    <button onclick="openEnvelope()">Բացել</button>
+    <div style="text-align: center;">
+      <button onclick="openEnvelope()">Բացել</button>
+    </div>
   </div>
 
   <script>
