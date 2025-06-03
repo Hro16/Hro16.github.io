@@ -1,70 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="hy">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <title>HTML</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ծրար Բացող</title>
+  <style>
+    body {
+      background-color: #fce4ec;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .envelope {
+      position: relative;
+      width: 90vw;
+      max-width: 320px;
+      aspect-ratio: 3 / 2;
+      background: pink;
+      border: 2px solid #d81b60;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transition: all 0.5s ease;
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 50%;
+      background: #f06292;
+      transform-origin: top;
+      transition: transform 0.5s ease;
+    }
+
+    .message {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      color: #d81b60;
+      text-align: center;
+      padding-top: 25%;
+      font-size: 5vw;
+      box-sizing: border-box;
+      transition: top 0.5s ease;
+    }
+
+    .open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .open .message {
+      top: 0;
+    }
+
+    button {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 16px;
+      border: none;
+      background: #d81b60;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 4vw;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ad1457;
+    }
+  </style>
 </head>
 <body>
-  <div>
-    <div class="controlpanel"><h class="name">Պարույր Սևակ (գյուղ)</h></div>
+
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="message">Դու անհավանական ես 💌</div>
+    <button onclick="openEnvelope()">Բացել</button>
   </div>
-  <div class="page">
-    <div class="div1"><b>Բովանդակություն</b>
-                      <ul id="ul">
-                        <li><a href="#">Ներածություն</a></li>
-                        <li><a href="#">Պատմություն</a></li>
-                        <li><a href="#">Կլիման</a></li>
-                        <li><a href="#">Բնակչություն</a></li>
-                        <li><a href="#">Տնտեսություն</a></li>
-                        <li><a href="#">Ծանոթագրություններ</a></li>
-                        <li><a href="#">Արտաքին հղումներ</a></li>
-                      </ul></div>
-                       
-    <div class="div2"><b>Պարույր Սևակ, գյուղ Հայաստանի Արարատի մարզում Արարատի տարածաշրջանի հարավ-արևելքում, Երասխ-Եղեգնաձոր ավտոմայրուղու վրա, մարզկենտրոնից` 43 կմ հեռավորության վրա։</b><br><br>
-      <h2>Պատմություն</h2>
-      <b>Գյուղը հիմնադրվել է 1978<թվականին։ Նախկինում ունեցել է Սևակավան անվանումը։ Սկզբնական շրջանում հիմնադրվել է որպես այգեգործական տնտեսություն, ապա 1984 թվականին դրան կից բնակավայրը կոչվել է գյուղ և իր անվանումը ստացել ի պատիվ Պարույր Սևակի։
 
-Գյուղն ընկած է Ուրծի լեռնաշղթայի մեղմաթեք լանջերին։ Ծովի մակարդակից տեղադրված է 1170 մ բարձրության վրա։ Սահմանամերձ է Նախիջևանի ինքնավար հանրապետությանը։</b><br><br>
-<h2>Կլիման</h2>
-<b>Կլիման չոր, ցամաքային է։ Ձմեռը չափավոր ցուրտ է, ամառը` շոգ ու ցամաքային։ Հունվարյան միջին ջերմաստիճանը տատանվում է -4-ից -7 °C, հուլիսյան միջինը՝ 23-ից 25 °C։ Տարեկան մթնոլորտային տեղումները կազմում են 350-500 մմ։ Բնական լանդշաֆտները կիսաանապատներն և չոր տափաստաններն են։ Ագրոկլիմայական տեսակետից ընկած է ինտենսիվ ոռոգման գոտում։</b>
-<br><br>
-<h2>Բնակչություն</h2>
-<b>Ըստ 2005 թ-ի ազգային վիճակագրական ծառայության տվյալների համայնքի բնակչությունը կազմում է 694 մարդ, որից 52% տղամարդիկ են, իսկ կանայք` 48%։ Մինչաշխատունակ տարիքի բնակչությունը կազմում է 25%, աշխատունակ տարիքի ներկայացուցիչները` 68%, հետաշխատունակները` 7%:</b>
-<br><br>
-<h2>Տնտեսություն</h2>
-<b>Գյուղն ունի 181 տնտեսություն, միջնակարգ դպրոց, գրադարան, բուժկետ, կապի հանգույց։ Համայնքի հողերը ոռոգվում են Արաքս գետի ջրերի պոմպակայաններով մղման արդյունքում։ Համայնքի տնտեսության մասնագիտացման ճյուղը գյուղատնտեսությունն է, համախառն բերքի մեծ մասը տալիս է բուսաբուծությունը։ Գյուղատնտեսական նշանակության հողերը կազմում են շուրջ 1885 հա։ Համայնքի հողերի հիմնական մասն օգտագործվում են որպես վարելահողեր՝ զբաղեցնելով մոտ 800 հա։ Ունի պտղատու և խաղողի այգիներ։ Զբաղվում են այգեգործությամբ, խաղողագործությամբ, դաշտավարությամբ, բանջարաբուծությամբ։ Մշակում են ջերմասեր բանջարաբոստանային, հացահատիկային և կերային կուլտուրաներ։ Արոտավայրերը զբաղեցնում են 945 հա։ Զբաղվում են կաթնամսատու անասնապահությամբ, թռչնաբուծությամբ։ Արդյունաբերություն ունի։</b>
-    </div>
-
-    <div class="div3">
-      <div class="imgdiv">
-        <img src="data:image/jpeg;base64,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">
-      </div>
-      <div class="txtdiv2">
-        <ul>
-          <li>Երկիր - Հայաստան</li>
-          <li>Մարզ - Արարատ</li>
-          <li>Համայնք - Արարատի Մարզ և Արարատի շրջան</li>
-          <li>Համայնքի ղեկավար - Լ․ Ստեփանյան</li>
-          <li>Հիմնադրվել է  -1978թ․</li>
-          <li>Տարծք-  16,54Կմ²</li>
-          <li>Բնակչությունը - 394մարդ (2011)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</body>
-  <footer>
-    <div class="footer"><br><br><br><br><br><br>
-      <b>Այս էջը վերջին անգամ փոփոխվել է 2025-ին։</b><br><br>
-      <b>All right is reserved! @2025</b><br>
-      <b>Բոլոր իրավունքները պաշտպանված են! @2025</b>
-    </div>
-  </footer>
-
-  <script type="text/javascript">
-    alert("Բարի Գալուստ Պարույր Սևակ գյուղ");
+  <script>
+    function openEnvelope() {
+      document.getElementById('envelope').classList.add('open');
+    }
   </script>
-  
+
+</body>
 </html>
